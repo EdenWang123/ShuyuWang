@@ -1,0 +1,38 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const links = [
+  { href: `${base}/about`,    label: 'About' },
+  { href: `${base}/research`, label: 'Research' },
+  { href: `${base}/blog`,     label: 'Blog' },
+];
+
+const path = Astro.url.pathname;
+---
+
+<header class="fixed top-0 inset-x-0 z-50 bg-cream/80 backdrop-blur-md border-b border-border">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
+
+    <!-- Wordmark -->
+    <a href={`${base}/`} class="font-serif font-bold text-base tracking-tight hover:text-accent transition-colors duration-200">
+      Eden Wang
+    </a>
+
+    <!-- Nav links -->
+    <nav class="flex items-center gap-8">
+      {links.map(l => (
+        <a
+          href={l.href}
+          class={`issue-label tracking-widest transition-colors duration-200 hover:text-accent ${
+            path.startsWith(l.href) ? 'text-accent' : 'text-ink'
+          }`}
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Editorial marker -->
+    <span class="issue-label hidden md:block">Vol. 2025 · No. 1</span>
+  </div>
+</header>
