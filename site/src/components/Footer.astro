@@ -1,0 +1,36 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<footer class="border-t border-border mt-24 py-12 px-6 md:px-10">
+  <div class="max-w-7xl mx-auto">
+    <div class="rule-bold mb-6"></div>
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+
+      <!-- Left: Name + affiliation -->
+      <div>
+        <p class="font-serif font-bold text-xl">Shuyu (Eden) Wang</p>
+        <p class="text-muted text-sm mt-1">Ph.D. Student · Educational Psychology · University of Connecticut</p>
+      </div>
+
+      <!-- Right: Contact + nav -->
+      <div class="flex flex-col items-start md:items-end gap-2">
+        <a href="mailto:Shuyu.Wang@uconn.edu"
+           class="issue-label text-ink hover:text-accent transition-colors duration-200">
+          Shuyu.Wang@uconn.edu
+        </a>
+        <div class="flex gap-6 mt-1">
+          {[
+            { href: `${base}/about`,    label: 'About' },
+            { href: `${base}/research`, label: 'Research' },
+            { href: `${base}/blog`,     label: 'Blog' },
+          ].map(l => (
+            <a href={l.href} class="issue-label hover:text-accent transition-colors duration-200">{l.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <p class="issue-label text-muted mt-10">© {new Date().getFullYear()} Shuyu (Eden) Wang · All rights reserved</p>
+  </div>
+</footer>
